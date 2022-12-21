@@ -18,4 +18,5 @@ public class Administrator {
     private int id;
     private String login;
     private String password;
+    private String role = "admin";
 }

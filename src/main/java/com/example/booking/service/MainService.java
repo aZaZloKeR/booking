@@ -21,7 +21,7 @@ public class MainService {
     @Autowired
     GuestRepository guestRepository;
 
-    public String checkRole(String login, String password) {
+    public String getEntityByLogin(String login, String password) {
         Optional<Administrator> isAdmin = administratorRepository.findByLogin(login);
         Optional<Guest> isGuest = guestRepository.findByLogin(login);
         if(isAdmin.isPresent()){

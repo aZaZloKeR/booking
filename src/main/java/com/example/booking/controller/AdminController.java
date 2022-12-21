@@ -1,9 +1,11 @@
 package com.example.booking.controller;
 
 import com.example.booking.database.Date;
+import com.example.booking.database.Guest;
 import com.example.booking.database.HotelRoom;
 import com.example.booking.database.repositories.HotelRoomRepository;
 import com.example.booking.service.AdminService;
+import com.example.booking.service.DateService;
 import com.example.booking.service.GuestService;
 import com.example.booking.service.HotelRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDate;
 import java.util.List;
 
-@Controller
+@Controller("/admin")
 public class AdminController {
     @Autowired
     AdminService adminService;
@@ -25,28 +27,24 @@ public class AdminController {
     @Autowired
     HotelRoomService hotelRoomService;
     @Autowired
-    HotelRoomRepository roomRepository;
+    DateService dateService;
 
     @GetMapping("/hotelRooms")
-    public String login(Model model) {
-        Iterable<HotelRoom> allHotelRooms = adminService.getAllHotelRooms();
-        for (HotelRoom room: allHotelRooms) {
-            System.out.println(room.getId() + "    " + room.getDates() + "|||||||");
-        }
-        model.addAttribute("allHotelRooms",allHotelRooms);
-        return "allHotelRooms";
+    public Iterable<HotelRoom> login() {
+        return adminService.getAllHotelRooms();
     }
 
     @PostMapping("/hotelRoom")
-    public String addHotelRoom(@RequestParam String number, @RequestParam int amountPlace,Model model){
+    public void addHotelRoom(@RequestParam String number, @RequestParam int amountPlace){
         hotelRoomService.addHotelRoom(number,amountPlace);
-        Iterable<HotelRoom> rooms = roomRepository.findAll();
-        model.addAttribute("allHotelRooms",rooms);
-        return "allHotelRooms";
     }
     @PostMapping("/booking")
-    public void addBooking(@RequestParam LocalDate date,boolean isBooking){
-
+    public void addBooking(@RequestParam LocalDate date,@RequestParam boolean isBooking){
+        dateService.addBookingToDate(date,isBooking);
+    }
+    @GetMapping("/guests")
+    public Iterable<Guest> getAllGuest(){
+        return guestService.getAllGuests();
     }
 
 }

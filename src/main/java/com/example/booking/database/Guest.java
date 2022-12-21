@@ -18,4 +18,5 @@ public class Guest {
     private int id;
     private String login;
     private String password;
+    private String role = "guest";
 }
