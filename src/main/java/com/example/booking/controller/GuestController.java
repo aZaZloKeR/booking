@@ -13,8 +13,8 @@ public class GuestController {
     GuestService guestService;
 
     @PostMapping("/user")
-    public void updateGuest(@RequestParam Integer id,@RequestParam String login,@RequestParam String password){
-        guestService.updateGuest(id,login,password);
+    public void updateGuest(@RequestParam Integer id, @RequestParam String password){
+        guestService.updateGuest(id,password);
     }
     @PostMapping("/book")
     public void bookHotelRoom(){

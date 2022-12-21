@@ -17,7 +17,7 @@ public class GuestService {
         return guestRepository.findAll();
     }
 
-    public void updateGuest(Integer id, String login, String password) {
+    public void updateGuest(Integer id, String password) {
         Optional<Guest> guest = guestRepository.findById(id);
         if(guest.isPresent()){
             Guest guest1 = guest.get();
