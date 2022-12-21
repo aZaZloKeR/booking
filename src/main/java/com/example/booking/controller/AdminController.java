@@ -1,22 +1,18 @@
 package com.example.booking.controller;
 
-import com.example.booking.database.Date;
 import com.example.booking.database.Guest;
 import com.example.booking.database.HotelRoom;
-import com.example.booking.database.repositories.HotelRoomRepository;
 import com.example.booking.service.AdminService;
 import com.example.booking.service.DateService;
 import com.example.booking.service.GuestService;
 import com.example.booking.service.HotelRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
-@CrossOrigin(origins = "http://localhost:4200")
-@RestController("/admin")
+@RestController
+@RequestMapping("/admin")
 public class AdminController {
     @Autowired
     AdminService adminService;
@@ -42,6 +38,7 @@ public class AdminController {
     }
     @GetMapping("/guests")
     public Iterable<Guest> getAllGuest(){
+        System.out.println("dawda");
         return guestService.getAllGuests();
     }
 

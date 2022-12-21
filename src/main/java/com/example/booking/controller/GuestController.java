@@ -3,13 +3,11 @@ package com.example.booking.controller;
 import com.example.booking.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:4200")
-@RestController("/guest")
+@RestController
+@RequestMapping("/guest")
 public class GuestController {
     @Autowired
     GuestService guestService;
