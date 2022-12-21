@@ -22,4 +22,8 @@ public class HotelRoom {
     @JoinColumn(name = "hotelRoomId")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Date> dates;
+
+    public void setDates(List<Date> dates) {
+        this.dates.addAll(dates);
+    }
 }
