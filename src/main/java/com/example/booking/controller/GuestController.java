@@ -1,5 +1,6 @@
 package com.example.booking.controller;
 
+import com.example.booking.database.Guest;
 import com.example.booking.service.GuestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,8 @@ public class GuestController {
     GuestService guestService;
 
     @PostMapping("/user")
-    public void updateGuest(@RequestParam Integer id, @RequestParam String password){
-        guestService.updateGuest(id,password);
+    public void updateGuest(@RequestBody Guest guest){
+        guestService.updateGuest(guest.getId(),guest.getPassword());
     }
     @PostMapping("/book")
     public void bookHotelRoom(){
