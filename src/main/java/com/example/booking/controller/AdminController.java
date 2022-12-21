@@ -2,6 +2,7 @@ package com.example.booking.controller;
 
 import com.example.booking.database.Guest;
 import com.example.booking.database.HotelRoom;
+import com.example.booking.restModel.GuestBook;
 import com.example.booking.service.AdminService;
 import com.example.booking.service.DateService;
 import com.example.booking.service.GuestService;
@@ -32,9 +33,9 @@ public class AdminController {
     public void addHotelRoom(@RequestBody HotelRoom hotelRoom){
         hotelRoomService.addHotelRoom(hotelRoom.getNumber(),hotelRoom.getAmountPlace());
     }
-    @PostMapping("/booking")
-    public void addBooking(@RequestParam LocalDate date,@RequestParam boolean isBooking){
-        dateService.addBookingToDate(date,isBooking);
+    @PostMapping("/book")
+    public void addBooking(@RequestBody GuestBook guestBook){
+        guestService.bookHotelRoom(guestBook);
     }
     @GetMapping("/guests")
     public Iterable<Guest> getAllGuest(){

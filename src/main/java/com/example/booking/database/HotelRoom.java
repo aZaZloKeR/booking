@@ -24,6 +24,10 @@ public class HotelRoom {
     private List<Date> dates;
 
     public void setDates(List<Date> dates) {
-        this.dates.addAll(dates);
+        for (Date date: dates){
+            if(!this.dates.contains(date)){
+                this.dates.add(date);
+            }
+        }
     }
 }
