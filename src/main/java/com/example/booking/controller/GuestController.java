@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/guest")
@@ -25,5 +28,8 @@ public class GuestController {
         guestService.bookHotelRoom(guestBook);
     }
 
-
+    @GetMapping("/book")
+    public List<LocalDate> getAllDateByGuest(@RequestParam Integer userId){
+        return guestService.getAllDateByGuest(userId);
+    }
 }

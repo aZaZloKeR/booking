@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface HotelRoomRepository  extends CrudRepository<HotelRoom, Integer> {
     Optional<HotelRoom> findByNumber(String number);
+    Iterable<HotelRoom> findAllByGuestId(Integer guestId);
 }

@@ -71,4 +71,19 @@ public class GuestService {
 
         }
     }
+
+    public List<LocalDate> getAllDateByGuest(Integer guestId) {
+        List<LocalDate> result = new ArrayList<>();
+        if(guestRepository.findById(guestId).isPresent()){
+            Iterable<HotelRoom> allByGuestId = hotelRoomRepository.findAllByGuestId(guestId);
+            for (HotelRoom hotelRoom: allByGuestId){
+                for (Date date : hotelRoom.getDates()) {
+                    if (date.isBook()) {
+                        result.add(date.getDate());
+                    }
+                }
+            }
+        }
+        return result;
+    }
 }
