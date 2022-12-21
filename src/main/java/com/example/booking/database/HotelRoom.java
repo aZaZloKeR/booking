@@ -19,6 +19,7 @@ public class HotelRoom {
     private int amountPlace;
     private int occupiedPlaces;
     private Integer guestId;
+    @JoinColumn(name = "hotelRoomId")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Date> dates;
 }
