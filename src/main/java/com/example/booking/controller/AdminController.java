@@ -29,8 +29,8 @@ public class AdminController {
     }
 
     @PostMapping("/hotelRoom")
-    public void addHotelRoom(@RequestParam String number, @RequestParam int amountPlace){
-        hotelRoomService.addHotelRoom(number,amountPlace);
+    public void addHotelRoom(@RequestBody HotelRoom hotelRoom){
+        hotelRoomService.addHotelRoom(hotelRoom.getNumber(),hotelRoom.getAmountPlace());
     }
     @PostMapping("/booking")
     public void addBooking(@RequestParam LocalDate date,@RequestParam boolean isBooking){
