@@ -41,7 +41,7 @@ public class GuestService {
         int guestId = guestBook.getUserId();
         Optional<Guest> byId = guestRepository.findById(guestId);
         if(byId.isPresent()){
-            Optional<HotelRoom> byNumber = hotelRoomRepository.findByNumber(guestBook.getNumber());
+            Optional<HotelRoom> byNumber = hotelRoomRepository.findByNumber(guestBook.getNumber());//достаёт из бд HotelRoom по номеру комнаты
             if (byNumber.isPresent()){
                 HotelRoom hotelRoom = byNumber.get();
                 List<LocalDate> totalDates = new ArrayList<>();

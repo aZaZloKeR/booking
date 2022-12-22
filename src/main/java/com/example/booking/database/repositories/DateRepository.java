@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 public interface DateRepository extends CrudRepository<Date,Integer> {
-    Iterable<Date> findAllByHotelRoomId(Integer hotelRoomId);
     Optional<Date> findByDate(LocalDate date);
     Optional<Date> findByHotelRoomIdAndDate(Integer hotelRoomId, LocalDate date);
 }

@@ -20,7 +20,7 @@ public class HotelRoom {
     private int occupiedPlaces;
     private Integer guestId;
     @JoinColumn(name = "hotelRoomId")
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true) // что бы была связь с Date
     private List<Date> dates;
 
     public void setDates(List<Date> dates) {
